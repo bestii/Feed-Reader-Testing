@@ -91,12 +91,24 @@ $(function () {
      */
     describe('Initial Entries', () => {
 
-        /* TODO: Write a test that ensures when the loadFeed
+        /* This test that ensures when the loadFeed
         * function is called and completes its work, there is at least
         * a single .entry element within the .feed container.
-        * Remember, loadFeed() is asynchronous so this test will require
-        * the use of Jasmine's beforeEach and asynchronous done() function.
         */
+        const $FEED = $('.feed');
+
+        // Call done when loadFeed has completed 
+        beforeEach((done) => {
+            loadFeed(0, () => {
+                done();
+            });
+        });
+
+        it('loadFeed completed and there is atleast 1 entry element in .feed container', (done) => {
+            //check if the entry length is not zero
+            expect($FEED.children().length).toBeGreaterThanOrEqual(1);
+            done();
+        });
     });
 
     /*
