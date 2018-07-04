@@ -56,12 +56,15 @@ $(function() {
      * Check if menue toggles on click - Spec 2
      */
     describe('The menu', ()=>{
+        const $BODY_ELEMENT = $('body');
+        const $HAMBURGER_ICON = $('menu-icon-link');
 
-         /* TODO: Write a test that ensures the menu element is
-         * hidden by default. You'll have to analyze the HTML and
-         * the CSS to determine how we're performing the
-         * hiding/showing of the menu element.
-         */
+         /* This test ensures the menu element is
+          * hidden by default.
+          */
+        it('Menu is hidden by default', ()=>{
+            expect($BODY_ELEMENT.hasClass('menu-hidden')).toBeTruthy();
+        });
 
          /* TODO: Write a test that ensures the menu changes
           * visibility when the menu icon is clicked. This test
