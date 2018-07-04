@@ -21,22 +21,33 @@ $(function() {
          * allFeeds in app.js to be an empty array and refresh the
          * page?
          */
-        it('are defined', function() {
+        it('allFeeds is defined', function() {
             expect(allFeeds).toBeDefined();
             expect(allFeeds.length).not.toBe(0);
         });
 
 
-        /* TODO: Write a test that loops through each feed
+        /* This test loops through each feed
          * in the allFeeds object and ensures it has a URL defined
          * and that the URL is not empty.
          */
-
-
-        /* TODO: Write a test that loops through each feed
+        it('allFeeds items have URL', ()=>{
+            allFeeds.map((item, indx, arr)=>{
+                expect(item.url).toBeDefined();
+                expect(item.url).not.toBe(null);
+            });          
+        });
+        
+        /* This test loops through each feed
          * in the allFeeds object and ensures it has a name defined
          * and that the name is not empty.
          */
+        it('allFeeds items have name', ()=>{
+            allFeeds.map((item, indx, arr)=>{
+                expect(item.name).toBeDefined();
+                expect(item.name).not.toBe(null);
+            });          
+        });
     });
 
     /*
@@ -62,7 +73,8 @@ $(function() {
 
     /*
      * Initial Entries - Test suite
-     * Check if loadfeed is called and completed and there is atleast one entry within .feed container - Spec 1
+     * Check if loadfeed is called and completed and 
+     * there is atleast one entry within .feed container - Spec 1
      */
     describe('Initial Entries', ()=>{
 
