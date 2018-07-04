@@ -75,9 +75,11 @@ $(function () {
          */
         it('Menu is toggled on click', () => {
 
+            // Click menu icon to open
             $HAMBURGER_ICON.click();
             expect($BODY_ELEMENT.hasClass('menu-hidden')).toBe(false);
 
+            // Click menu icon to close
             $HAMBURGER_ICON.click();
             expect($BODY_ELEMENT.hasClass('menu-hidden')).toBeTruthy();
         });
@@ -99,6 +101,7 @@ $(function () {
 
         // Call done when loadFeed has completed 
         beforeEach((done) => {
+            // Wait till feedLoad is completed
             loadFeed(0, () => {
                 done();
             });
@@ -131,19 +134,18 @@ $(function () {
 
                 // Next Feed Load
                 loadFeed(1, () => {
-                   next_feed_dom = $FEED.html();
+                    next_feed_dom = $FEED.html();
                     done();
                 });
             });
 
         });
-        
-        it('New content is render on subsequent loadFeed', (done) => {           
+
+        it('New content is render on subsequent loadFeed', (done) => {
+            // Verify DOM contents 
             expect(next_feed_dom).not.toBe(initial_feed_dom);
             done();
         });
 
     });
-
-
 }());
