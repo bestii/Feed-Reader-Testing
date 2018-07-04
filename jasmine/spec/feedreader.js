@@ -117,10 +117,32 @@ $(function () {
      */
     describe('New Feed Selection', () => {
 
-        /* TODO: Write a test that ensures when a new feed is loaded
+        /* This test ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
-         * Remember, loadFeed() is asynchronous.
          */
+        let initial_feed_dom, next_feed_dom;
+        const $FEED = $('.feed');
+
+        beforeEach(function (done) {
+
+            // Initial Feed load
+            loadFeed(0, () => {
+                initial_feed_dom = $FEED.html();
+
+                // Next Feed Load
+                loadFeed(1, () => {
+                   next_feed_dom = $FEED.html();
+                    done();
+                });
+            });
+
+        });
+        
+        it('New content is render on subsequent loadFeed', (done) => {           
+            expect(next_feed_dom).not.toBe(initial_feed_dom);
+            done();
+        });
+
     });
 
 
